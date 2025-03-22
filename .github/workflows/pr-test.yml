@@ -15,6 +15,6 @@ jobs:
       - name: Update Chrome version
         run: |
           LATEST_VERSION=$(curl -s "https://chromiumdash.appspot.com/fetch_releases?channel=Stable&platform=Linux&num=1" | jq -r '.[0].version')-1
-          sed -i '' -e "s/^ARG CHROME_VERSION=.*$/ARG CHROME_VERSION=$LATEST_VERSION/" Dockerfile
+          sed -i -e "s/^ARG CHROME_VERSION=.*$/ARG CHROME_VERSION=$LATEST_VERSION/" Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
